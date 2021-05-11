@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+    <style>
+        h1 {
+          text-align: center;
+          font-family: verdana;
+          font-size: 70px;
+        }
+        body{
+          font-size: 30px;  
+        }
+        input{
+            font-size: 30px;
+        }
+        select{
+            font-size: 30px;
+        }
+        .subtitulo{
+            font-size: 20px;
+            color: red;
+        }
+        button{
+            color: #ffffff;
+            background-color: #1672af;
+            font-size: 30px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conversor de Temperatura</h1>
+    <h1 class="subtitulo">Compare as temperaturas</h1>
+    <form>
+        <label for="temperatura">Temperatura:</label>
+        <input id="temperatura" placeholder="Digite aqui a temperatura"><br><br>
+        
+        <label for="origem">Unidade de Origem</label>
+        <select name="origem" id="origem">
+            <option value="1">Fahrenheit</option>
+            <option value="2">Celsius</option>
+        </select>
+        <label for="destino">Unidade de Destino</label>
+        <select name="destino" id="destino">
+            <option value="1">Fahrenheit</option>
+            <option value="2">Celsius</option>
+        </select><br><br>
+        <label for="resultado">Resultado:</label>
+        <input id="resultado"/><br>
+        <button onclick="converterTemperatura(event)">Converter</button>
+    </form>
+
+    <script type="text/javascript">
+        function converterTemperatura(event){
+            event.preventDefault();
+            var valorTemperatura = document.getElementById("temperatura").value;
+            var valorOrigem = document.getElementById("origem").value;
+            var valorDestino = document.getElementById("destino").value;
+            var valorResultado = valorTemperatura;
+
+            if(valorOrigem == "1" && valorDestino == "2"){
+                //executar calculo de Fahrenheit para celsius
+                valorResultado = (valorTemperatura - 32)/1.8
+            }
+
+            if(valorOrigem == "2" && valorDestino == "1"){
+                //executar calculo de celsius para Fahrenheit
+                valorResultado = (valorTemperatura * 1.8) + 32
+            }
+            document.getElementById("resultado").value = valorResultado;
+        }
+    </script>
+</body>
+</html>
